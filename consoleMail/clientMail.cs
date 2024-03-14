@@ -17,12 +17,12 @@ static class clientMail
     {
         try
         {
-            client.Connect(host, port); //подключение клиента
+            client.Connect(host, port); 
             Reader = new StreamReader(client.GetStream());
             Writer = new StreamWriter(client.GetStream());
             if (Writer is null || Reader is null) return;
 
-           //Task.Run(() => ReceiveMessageAsync());
+           
         }
         catch (Exception ex)
         {
@@ -31,7 +31,7 @@ static class clientMail
     
     }
 
-    // отправка сообщений
+   
     static public async Task SendMessageAsync(String msg= "")
     {      
         await Writer.WriteLineAsync(msg);
@@ -46,6 +46,8 @@ static class clientMail
             try
             {
                 string? message = await Reader.ReadLineAsync();
+
+                Debug.WriteLine(message + "Messege From client");
 
                 switch (message[0])
                 {
