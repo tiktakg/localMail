@@ -1,4 +1,4 @@
-﻿using consoleMail.Forms;
+﻿using consoleMail.entitys;
 using Newtonsoft.Json;
 
 namespace consoleMail
@@ -12,10 +12,17 @@ namespace consoleMail
             string jsonUser = JsonConvert.SerializeObject(newUser);
 
             clientMail.connectToSever();
-            clientMail.SendMessageAsync("1" +jsonUser).Wait();
+            clientMail.SendMessageAsync("{\"newUser\":" + jsonUser + "}").Wait();
             return true;
            
 
+        }
+        static public void sendMsg(string themeOfMsg, string senderOfMsg, string textOfMsg, string fileOfMsg = "")
+        {
+            msg newMsg = new msg(themeOfMsg, senderOfMsg, textOfMsg, fileOfMsg);
+            string jsonMsg = JsonConvert.SerializeObject(newMsg);
+
+            clientMail.SendMessageAsync("{\"msg\":" + jsonMsg + "}").Wait();
         }
 
         static public bool checkEmptyFiled(params string[] textFields)

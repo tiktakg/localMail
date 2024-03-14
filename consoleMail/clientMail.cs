@@ -38,7 +38,7 @@ static class clientMail
         await Writer.FlushAsync();
  
     }
-    // получение сообщений
+
     static public async Task<string> ReceiveMessageAsync()
     {
         while (true)
@@ -54,11 +54,7 @@ static class clientMail
                     case '2':
                         break;
                 }
-
-                 
-
-                return message;
-                
+                return message;   
             }
             catch
             {
@@ -68,12 +64,8 @@ static class clientMail
         return "";
         
     }
-    
-
    
 }
-
-
 
 
 

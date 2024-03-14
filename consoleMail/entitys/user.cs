@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace consoleMail.Forms
+namespace consoleMail.entitys
 {
     public class user
     {

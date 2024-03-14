@@ -25,7 +25,8 @@ namespace consoleMail.Forms
 
         private void sendMail_button_Click(object sender, EventArgs e)
         {
-            clientMail.SendMessageAsync(msg_textBox.Text);
+            if (tools.checkEmptyFiled(theme_textBox.Text, msg_textBox.Text, receiver_textBox.Text))
+                tools.sendMsg(theme_textBox.Text, msg_textBox.Text, receiver_textBox.Text);
         }
 
         private void allUMesseges_listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
