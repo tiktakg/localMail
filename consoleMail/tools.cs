@@ -1,4 +1,6 @@
 ﻿using consoleMail.entitys;
+using Microsoft.VisualBasic.ApplicationServices;
+using Microsoft.VisualBasic.Logging;
 using Newtonsoft.Json;
 
 namespace consoleMail
@@ -33,8 +35,16 @@ namespace consoleMail
             return true;
         }
 
+        static public void isUserExist(string loginOfUser, string passwordOfUser)
+        {
 
+            user newUser = new user(loginOfUser, passwordOfUser,"","","");
+            string jsonUser = JsonConvert.SerializeObject(newUser);
 
-     
+            clientMail.connectToSever();
+            clientMail.SendMessageAsync("{\"findUser\":" + jsonUser + "}");
+
+        }
+
     }
 }

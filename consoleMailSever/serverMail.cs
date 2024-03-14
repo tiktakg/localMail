@@ -1,27 +1,33 @@
-﻿
-using consoleMailSever;
+﻿using consoleMailSever;
+using consoleMailSever.entitys;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
- 
+using Newtonsoft.Json;
+using System.Text;
+
 ServerObject server = new ServerObject();// создаем сервер
+Console.OutputEncoding = Encoding.UTF8;
+
 await server.ListenAsync(); // запускаем сервер
+
  
 class ServerObject
 {
-    TcpListener tcpListener = new TcpListener(IPAddress.Any, 8888); // сервер для прослушивания
-    List<ClientObject> clients = new List<ClientObject>(); // все подключения
+    TcpListener tcpListener = new TcpListener(IPAddress.Any, 8888);
+    List<ClientObject> clients = new List<ClientObject>(); 
     protected internal void RemoveConnection(string id)
     {
-        // получаем по id закрытое подключение
         ClientObject? client = clients.FirstOrDefault(c => c.Id == id);
-        // и удаляем его из списка подключений
-        if (client != null) clients.Remove(client);
+       
+        if (client != null) 
+            clients.Remove(client);
+
         client?.Close();
     }
-    // прослушивание входящих подключений
     protected internal async Task ListenAsync()
     {
+       
         try
         {
             tcpListener.Start();
@@ -81,11 +87,9 @@ class ClientObject
     {
         client = tcpClient;
         server = serverObject;
-        // получаем NetworkStream для взаимодействия с сервером
-        var stream = client.GetStream();
-        // создаем StreamReader для чтения данных
-        Reader = new StreamReader(stream);
-        // создаем StreamWriter для отправки данных
+       
+        var stream = client.GetStream(); 
+        Reader = new StreamReader(stream);   
         Writer = new StreamWriter(stream);
     }
  
@@ -93,22 +97,66 @@ class ClientObject
     {
         try
         {
-            // получаем имя пользователя
             string? userName = await Reader.ReadLineAsync();
             string? message = $"{userName} вошел в чат";
-            // посылаем сообщение о входе в чат всем подключенным пользователям
+
             await server.BroadcastMessageAsync(message, Id);
             Console.WriteLine(message);
-            // в бесконечном цикле получаем сообщения от клиента
+      
             while (true)
             {
                 try
                 {
                     message = await Reader.ReadLineAsync();
-                    if (message == null) 
-                        continue;
 
-                    checkStatment(message);
+                    jsonMsg jsonMsg = JsonConvert.DeserializeObject<jsonMsg>(message);
+
+                    if (jsonMsg.newUser != null)
+                    {
+                        
+                        Console.WriteLine("Received a new user:");
+
+                        if (tools.tryAddNewUser(jsonMsg.newUser, tools.getALlUsers()))
+                        {
+                            await Writer.WriteLineAsync("2");
+                            await Writer.FlushAsync();
+                        }
+                        else
+                        {
+                            await Writer.WriteLineAsync("1");
+                            await Writer.FlushAsync();
+                        }
+
+                    }
+                    else if (jsonMsg.msg != null)
+                    {
+                     
+                        Console.WriteLine("Received a message:");
+                     
+                    }
+                    else if(jsonMsg.findUser != null)
+                    {
+                        Console.WriteLine("Received  user:");
+
+                        if (tools.isUserExist(jsonMsg.findUser))
+                        {
+                            await Writer.WriteLineAsync("2");
+                            await Writer.FlushAsync();
+                        }
+                        else
+                        {
+                            await Writer.WriteLineAsync("1");
+                            await Writer.FlushAsync();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unknown message type");
+                    }
+
+
+
+                   
                     message = $"{userName}: {message}";
                   
                     Console.WriteLine(message);
@@ -129,23 +177,11 @@ class ClientObject
         }
         finally
         {
-            // в случае выхода из цикла закрываем ресурсы
             server.RemoveConnection(Id);
         }
     }
     
-    private void checkStatment(string msg)
-    {
-        switch(msg[0]) 
-        {
-            case '1':
-                Debug.WriteLine("new user");
-                getALlUsers(msg);
-                break;
-            case '2':
-                break;
-        }
-    }
+
     protected internal void Close()
     {
         Writer.Close();
@@ -153,12 +189,6 @@ class ClientObject
         client.Close();
     }
 
-    private void getALlUsers(string messege)
-    {
-        using (DBContext DB = new DBContext())
-        {
-            var users = DB.allUsers.ToList();
-        }
-    }
+   
 }
 

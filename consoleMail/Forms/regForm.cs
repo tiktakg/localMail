@@ -9,7 +9,7 @@ namespace consoleMail.Forms
             InitializeComponent();
 
             clientMail.connectToSever();
-           
+
 
         }
 
@@ -36,8 +36,15 @@ namespace consoleMail.Forms
                 if (messege != "" && messege[0] == '2')
                     MessageBox.Show("Пользователь успешно создан!", "Успешно!");
                 else if (messege != "" && messege[0] == '1')
-                    MessageBox.Show("Таккой пользователь уже создан!", "Ошибка!");
+                    MessageBox.Show("Такой пользователь уже создан!", "Ошибка!");
             }
+        }
+
+        private void back_button_Click(object sender, EventArgs e)
+        {
+            Hide();
+            startForm startForm = new startForm();
+            startForm.Show();
         }
     }
 }

@@ -5,10 +5,13 @@ namespace consoleMailSever.entitys
     public class users
     {
         [Key]
-        public int id;
-        public string userDataId { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
-     
+        public int id { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public string Position { get; set; }
+        public string Department { get; set; }
+
     }
 }

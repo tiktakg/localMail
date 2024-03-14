@@ -33,6 +33,7 @@
             password_label = new Label();
             password_textBox = new TextBox();
             tryAuth_button = new Button();
+            back_button = new Button();
             SuspendLayout();
             // 
             // login_label
@@ -79,11 +80,22 @@
             tryAuth_button.UseVisualStyleBackColor = true;
             tryAuth_button.Click += tryAuth_button_Click;
             // 
+            // back_button
+            // 
+            back_button.Location = new Point(366, 388);
+            back_button.Name = "back_button";
+            back_button.Size = new Size(200, 50);
+            back_button.TabIndex = 12;
+            back_button.Text = "Назад";
+            back_button.UseVisualStyleBackColor = true;
+            back_button.Click += back_button_Click;
+            // 
             // authForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(back_button);
             Controls.Add(tryAuth_button);
             Controls.Add(password_label);
             Controls.Add(password_textBox);
@@ -102,5 +114,6 @@
         private Label password_label;
         private TextBox password_textBox;
         private Button tryAuth_button;
+        private Button back_button;
     }
 }

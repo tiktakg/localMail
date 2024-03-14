@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace consoleMailSever.entitys
 {
-    public class msg
+    public class messenges
     {
         [Key]
         public int id { get; set; }

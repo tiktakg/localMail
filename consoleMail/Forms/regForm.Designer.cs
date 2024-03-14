@@ -41,6 +41,7 @@
             password_textBox = new TextBox();
             department_label = new Label();
             department_textBox = new TextBox();
+            back_button = new Button();
             SuspendLayout();
             // 
             // tryReg_button
@@ -155,11 +156,22 @@
             department_textBox.Size = new Size(100, 23);
             department_textBox.TabIndex = 11;
             // 
+            // back_button
+            // 
+            back_button.Location = new Point(352, 379);
+            back_button.Name = "back_button";
+            back_button.Size = new Size(200, 50);
+            back_button.TabIndex = 14;
+            back_button.Text = "Назад";
+            back_button.UseVisualStyleBackColor = true;
+            back_button.Click += back_button_Click;
+            // 
             // regForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(back_button);
             Controls.Add(department_label);
             Controls.Add(department_textBox);
             Controls.Add(postion_label);
@@ -194,5 +206,6 @@
         private TextBox password_textBox;
         private Label department_label;
         private TextBox department_textBox;
+        private Button back_button;
     }
 }

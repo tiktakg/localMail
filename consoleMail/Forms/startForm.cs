@@ -7,8 +7,6 @@ namespace consoleMail
         public startForm()
         {
             InitializeComponent();
-
-
         }
 
         private void auth_button_Click(object sender, EventArgs e)

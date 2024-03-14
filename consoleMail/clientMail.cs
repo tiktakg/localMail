@@ -20,7 +20,8 @@ static class clientMail
             client.Connect(host, port); 
             Reader = new StreamReader(client.GetStream());
             Writer = new StreamWriter(client.GetStream());
-            if (Writer is null || Reader is null) return;
+            if (Writer is null || Reader is null) 
+                return;
 
            
         }
@@ -49,13 +50,7 @@ static class clientMail
 
                 Debug.WriteLine(message + "Messege From client");
 
-                switch (message[0])
-                {
-                    case '1':
-                        break;
-                    case '2':
-                        break;
-                }
+     
                 return message;   
             }
             catch
