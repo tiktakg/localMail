@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "7xuDkCjVIpDCEsOEO4OAFihvzXhqAzPQHjUN2l8dY3sNoZJ8j4SQpW0F1jkl/PJUela0MiACfuAOsShzysvv2w==",
+  "success": true,
+  "projectFilePath": "D:\\data\\visualStudioProjects\\consoleMailServerAndClient\\consoleMail\\consoleMail.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gupli\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\gupli\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

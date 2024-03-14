@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Forms\authForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\mainPageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\regForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\showMailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\startForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
