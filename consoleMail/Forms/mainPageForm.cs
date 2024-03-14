@@ -13,20 +13,21 @@ namespace consoleMail.Forms
 {
     public partial class mainPageForm : Form
     {
+        internal static string loginOfUser;
         public mainPageForm()
         {
             InitializeComponent();
 
             clientMail.connectToSever();
             this.Load += isNewMsg;
-
-        
         }
 
         private void sendMail_button_Click(object sender, EventArgs e)
         {
             if (tools.checkEmptyFiled(theme_textBox.Text, msg_textBox.Text, receiver_textBox.Text))
-                tools.sendMsg(theme_textBox.Text, msg_textBox.Text, receiver_textBox.Text);
+                tools.sendMsg(theme_textBox.Text, loginOfUser, receiver_textBox.Text,msg_textBox.Text);
+            else
+                MessageBox.Show("Какие-то поля пустые!", "Ошибка!");
         }
 
         private void allUMesseges_listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)

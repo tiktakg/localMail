@@ -12,13 +12,15 @@ namespace consoleMail.entitys
     {
         public string ThemeOfMsg { get; set; }
         public string SenderOfMsg { get; set; }
+        public string ReciverOfMsg { get; set; }
         public string TextOfMsg { get; set; }
         public string FildOfMsg { get; set; }
 
-        public msg(string themeOfMsg, string senderOfMsg, string textOfMsg, string fileOfMsg = "")
+        public msg(string themeOfMsg, string senderOfMsg,string reciverOfMsg, string textOfMsg, string fileOfMsg = "")
         {
             ThemeOfMsg = themeOfMsg;
             SenderOfMsg = senderOfMsg;
+            ReciverOfMsg = reciverOfMsg;
             TextOfMsg = textOfMsg;
             FildOfMsg = fileOfMsg;
            

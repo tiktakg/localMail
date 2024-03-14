@@ -18,9 +18,9 @@ namespace consoleMail
 
 
         }
-        static public void sendMsg(string themeOfMsg, string senderOfMsg, string textOfMsg, string fileOfMsg = "")
+        static public void sendMsg(string themeOfMsg, string senderOfMsg,string recieverOfMsg, string textOfMsg, string fileOfMsg = "")
         {
-            msg newMsg = new msg(themeOfMsg, senderOfMsg, textOfMsg, fileOfMsg);
+            msg newMsg = new msg(themeOfMsg, senderOfMsg, recieverOfMsg, textOfMsg, fileOfMsg);
             string jsonMsg = JsonConvert.SerializeObject(newMsg);
 
             clientMail.SendMessageAsync("{\"msg\":" + jsonMsg + "}").Wait();

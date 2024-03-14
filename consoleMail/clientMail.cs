@@ -48,9 +48,7 @@ static class clientMail
             {
                 string? message = await Reader.ReadLineAsync();
 
-                Debug.WriteLine(message + "Messege From client");
-
-     
+                 
                 return message;   
             }
             catch

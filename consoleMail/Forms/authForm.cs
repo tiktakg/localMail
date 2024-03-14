@@ -30,6 +30,7 @@ namespace consoleMail.Forms
                 {
                     Hide();
                     mainPageForm mainPageForm = new mainPageForm();
+                    mainPageForm.loginOfUser = login_textBox.Text;
                     mainPageForm.Show();
                 }
              
