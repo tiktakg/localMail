@@ -46,5 +46,12 @@ namespace consoleMail
 
         }
 
+        static public bool prepereMsg(msg newMsg, string userLogin)
+        {
+            if (newMsg.ReciverOfMsg == userLogin)
+                return true;
+            return false;
+        }
+
     }
 }

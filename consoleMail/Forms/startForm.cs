@@ -11,6 +11,8 @@ namespace consoleMail
 
         private void auth_button_Click(object sender, EventArgs e)
         {
+            clientMail.host= ipOfHost_textBox.Text;
+
             Hide();
             authForm authForm = new authForm();
             authForm.Show();
@@ -18,6 +20,8 @@ namespace consoleMail
 
         private void reg_button_Click(object sender, EventArgs e)
         {
+            clientMail.host = ipOfHost_textBox.Text;
+
             Hide();
             regForm authForm = new regForm();
             authForm.Show();

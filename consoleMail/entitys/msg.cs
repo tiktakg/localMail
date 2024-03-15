@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace consoleMail.entitys
 {
-    internal class msg
+    public class msg
     {
         public string ThemeOfMsg { get; set; }
         public string SenderOfMsg { get; set; }

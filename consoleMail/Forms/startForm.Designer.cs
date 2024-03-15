@@ -30,6 +30,7 @@
         {
             reg_button = new Button();
             auth_button = new Button();
+            ipOfHost_textBox = new TextBox();
             SuspendLayout();
             // 
             // reg_button
@@ -52,20 +53,31 @@
             auth_button.UseVisualStyleBackColor = true;
             auth_button.Click += auth_button_Click;
             // 
+            // ipOfHost_textBox
+            // 
+            ipOfHost_textBox.Location = new Point(232, 71);
+            ipOfHost_textBox.Multiline = true;
+            ipOfHost_textBox.Name = "ipOfHost_textBox";
+            ipOfHost_textBox.Size = new Size(173, 51);
+            ipOfHost_textBox.TabIndex = 12;
+            // 
             // startForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(ipOfHost_textBox);
             Controls.Add(auth_button);
             Controls.Add(reg_button);
             Name = "startForm";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button reg_button;
         private Button auth_button;
+        private TextBox ipOfHost_textBox;
     }
 }

@@ -5,10 +5,9 @@ using System.Net.Sockets;
 static class clientMail
 {
 
-    static private string host = "192.168.31.219";
+    static public string host;
     static private int port = 8888;
     static private TcpClient client = new TcpClient();
-    static private string? userName = "test3";
 
     static public StreamReader? Reader = null;
     static public StreamWriter? Writer = null;
