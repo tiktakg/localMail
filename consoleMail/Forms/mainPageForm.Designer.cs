@@ -74,6 +74,7 @@
             attachFile_button.TabIndex = 3;
             attachFile_button.Text = "Прикрепить файл";
             attachFile_button.UseVisualStyleBackColor = true;
+            attachFile_button.Click += attachFile_button_Click;
             // 
             // nameOfFile_label
             // 

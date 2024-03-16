@@ -31,6 +31,7 @@
             theme_label = new Label();
             sender_label = new Label();
             messege_label = new Label();
+            openFile_button = new Button();
             SuspendLayout();
             // 
             // theme_label
@@ -63,16 +64,27 @@
             messege_label.TabIndex = 2;
             messege_label.Text = "Сообщение -";
             // 
+            // openFile_button
+            // 
+            openFile_button.Location = new Point(12, 406);
+            openFile_button.Name = "openFile_button";
+            openFile_button.Size = new Size(184, 32);
+            openFile_button.TabIndex = 3;
+            openFile_button.Text = "Открыть файл";
+            openFile_button.UseVisualStyleBackColor = true;
+            openFile_button.Click += openFile_button_Click;
+            // 
             // showMailForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(openFile_button);
             Controls.Add(messege_label);
             Controls.Add(sender_label);
             Controls.Add(theme_label);
             Name = "showMailForm";
-            Text = "showMailForm";
+            Text = "7";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -82,5 +94,6 @@
         private Label theme_label;
         private Label sender_label;
         private Label messege_label;
+        private Button openFile_button;
     }
 }

@@ -19,20 +19,18 @@ static class clientMail
             client.Connect(host, port); 
             Reader = new StreamReader(client.GetStream());
             Writer = new StreamWriter(client.GetStream());
+
             if (Writer is null || Reader is null) 
                 return;
-
-           
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
         }
-    
     }
 
    
-    static public async Task SendMessageAsync(String msg= "")
+    static public async Task SendMessageAsync(string msg= "")
     {      
         await Writer.WriteLineAsync(msg);
         await Writer.FlushAsync();
@@ -46,8 +44,6 @@ static class clientMail
             try
             {
                 string? message = await Reader.ReadLineAsync();
-
-                 
                 return message;   
             }
             catch
