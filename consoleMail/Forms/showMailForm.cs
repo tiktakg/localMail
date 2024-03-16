@@ -1,14 +1,5 @@
 ﻿using consoleMail.entitys;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 
 namespace consoleMail.Forms
@@ -23,17 +14,13 @@ namespace consoleMail.Forms
 
             theme_label.Text = "Тема - " + currentMsg.ThemeOfMsg;
             sender_label.Text = "Отправитель - " + currentMsg.SenderOfMsg;
+            priorityOfMsg_label.Text = "Важность - " + currentMsg.Priority;
             messege_label.Text = currentMsg.TextOfMsg;
             filePath = tools.base64ToFile(currentMsg.FileOfMsg, currentMsg.FileExtension,currentMsg.FileName);
 
             if(filePath == "")
                 openFile_button.Enabled = false;
-
-
-        }
-
-       
-     
+        }     
 
         private void openFile_button_Click(object sender, EventArgs e)
         {

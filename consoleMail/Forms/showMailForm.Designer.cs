@@ -32,6 +32,7 @@
             sender_label = new Label();
             messege_label = new Label();
             openFile_button = new Button();
+            priorityOfMsg_label = new Label();
             SuspendLayout();
             // 
             // theme_label
@@ -58,7 +59,7 @@
             // 
             messege_label.AutoSize = true;
             messege_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            messege_label.Location = new Point(12, 81);
+            messege_label.Location = new Point(12, 120);
             messege_label.Name = "messege_label";
             messege_label.Size = new Size(128, 25);
             messege_label.TabIndex = 2;
@@ -74,17 +75,28 @@
             openFile_button.UseVisualStyleBackColor = true;
             openFile_button.Click += openFile_button_Click;
             // 
+            // priorityOfMsg_label
+            // 
+            priorityOfMsg_label.AutoSize = true;
+            priorityOfMsg_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            priorityOfMsg_label.Location = new Point(12, 85);
+            priorityOfMsg_label.Name = "priorityOfMsg_label";
+            priorityOfMsg_label.Size = new Size(109, 25);
+            priorityOfMsg_label.TabIndex = 4;
+            priorityOfMsg_label.Text = "Важность -";
+            // 
             // showMailForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(priorityOfMsg_label);
             Controls.Add(openFile_button);
             Controls.Add(messege_label);
             Controls.Add(sender_label);
             Controls.Add(theme_label);
             Name = "showMailForm";
-            Text = "7";
+            Text = "Сообщение";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -95,5 +107,6 @@
         private Label sender_label;
         private Label messege_label;
         private Button openFile_button;
+        private Label priorityOfMsg_label;
     }
 }

@@ -16,28 +16,33 @@ namespace consoleMail.Forms
 {
     public partial class mainPageForm : Form
     {
-        internal static string loginOfUser;
+        private static user currentUser;
         private static string pathOfFile = "";
 
         List<msg> msgList = new List<msg>();
+        
 
-        public mainPageForm()
+        public mainPageForm(user user)
         {
             InitializeComponent();
 
+            currentUser = user;
+
             clientMail.connectToSever();
+
+            //  msgList = tools.getAllMsg(currentUser);
             this.Load += isNewMsg;
         }
 
         private void sendMail_button_Click(object sender, EventArgs e)
         {
             if (tools.checkEmptyFiled(theme_textBox.Text, msg_textBox.Text, receiver_textBox.Text))
-                tools.sendMsg(theme_textBox.Text, loginOfUser, receiver_textBox.Text, msg_textBox.Text,pathOfFile);
+                tools.sendMsg(theme_textBox.Text, currentUser.Login, receiver_textBox.Text, msg_textBox.Text, pathOfFile, priorityOfMsg_comboBox.SelectedItem.ToString());
             else
                 MessageBox.Show("Какие-то поля пустые!", "Ошибка!");
         }
 
-        private void allUMesseges_listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        private void allMesseges_listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             msg selectedMsg = msgList.Find(t => t.ThemeOfMsg == e.Item.Text);
             showMailForm showMailForm = new showMailForm(selectedMsg);
@@ -49,13 +54,13 @@ namespace consoleMail.Forms
         {
             string messege = await clientMail.ReceiveMessageAsync();
 
-            if (messege != "")
+            if (messege != null && messege != "")
             {
-                jsonMsg jsonMsg = JsonConvert.DeserializeObject<jsonMsg>(messege);
+                jsonMsg? jsonMsg = JsonConvert.DeserializeObject<jsonMsg>(messege);
 
-                if (jsonMsg.msg != null && tools.prepereMsg(jsonMsg.msg, loginOfUser))
+                if (jsonMsg.msg != null && tools.prepereMsg(jsonMsg.msg, currentUser.Login))
                 {
-                    allUMesseges_listView.Items.Add(jsonMsg.msg.ThemeOfMsg);
+                    allMesseges_listView.Items.Add(jsonMsg.msg.ThemeOfMsg);
                     msgList.Add(jsonMsg.msg);
                 }
 
@@ -68,7 +73,7 @@ namespace consoleMail.Forms
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.ShowDialog();
-            
+
             pathOfFile = openFileDialog.FileName;
 
             if (pathOfFile != "")
@@ -76,5 +81,23 @@ namespace consoleMail.Forms
             else
                 nameOfFile_label.Text = "Файл не выбран";
         }
+
+        private void sortMsg_textBox_TextChanged(object sender, EventArgs e)
+        {
+            List<string> sortedMsg = tools.findSortedMsg(sortMsg_textBox.Text.Replace(" ",""), msgList);
+
+            allMesseges_listView.Items.Clear();
+            allMesseges_listView.Items.AddRange(sortedMsg.Select(msg => new ListViewItem(msg)).ToArray());
+        }
+
+      
+        private void priorityOfMsgToSort_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            List<string> msgListWithCurrentPriority = tools.getMsgWithCurrentPrioprity(priorityOfMsgToSort_comboBox.SelectedItem.ToString(), msgList);
+            allMesseges_listView.Items.Clear();
+            allMesseges_listView.Items.AddRange(msgListWithCurrentPriority.Select(msg => new ListViewItem(msg)).ToArray());
+
+        }
+
     }
 }

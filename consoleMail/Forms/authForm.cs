@@ -1,4 +1,5 @@
-﻿using System;
+﻿using consoleMail.entitys;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,15 +23,13 @@ namespace consoleMail.Forms
             
             if (tools.checkEmptyFiled(login_textBox.Text, password_textBox.Text))
             {
-                tools.isUserExist(login_textBox.Text, password_textBox.Text);
+                user currentUser = tools.isUserExist(login_textBox.Text, password_textBox.Text);
                 this.Load += tryAuth_button_Click;
-
                
                 if (await ReceiveMessage())
                 {
                     Hide();
-                    mainPageForm mainPageForm = new mainPageForm();
-                    mainPageForm.loginOfUser = login_textBox.Text;
+                    mainPageForm mainPageForm = new mainPageForm(currentUser);
                     mainPageForm.Show();
                 }
              
