@@ -35,9 +35,9 @@
             // 
             // reg_button
             // 
-            reg_button.Location = new Point(523, 338);
+            reg_button.Location = new Point(190, 57);
             reg_button.Name = "reg_button";
-            reg_button.Size = new Size(265, 100);
+            reg_button.Size = new Size(172, 39);
             reg_button.TabIndex = 1;
             reg_button.Text = "Зарегистрироватья";
             reg_button.UseVisualStyleBackColor = true;
@@ -45,9 +45,9 @@
             // 
             // auth_button
             // 
-            auth_button.Location = new Point(12, 338);
+            auth_button.Location = new Point(12, 57);
             auth_button.Name = "auth_button";
-            auth_button.Size = new Size(265, 100);
+            auth_button.Size = new Size(172, 39);
             auth_button.TabIndex = 2;
             auth_button.Text = "Авторизоваться";
             auth_button.UseVisualStyleBackColor = true;
@@ -55,21 +55,26 @@
             // 
             // ipOfHost_textBox
             // 
-            ipOfHost_textBox.Location = new Point(232, 71);
+            ipOfHost_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ipOfHost_textBox.Location = new Point(12, 12);
             ipOfHost_textBox.Multiline = true;
             ipOfHost_textBox.Name = "ipOfHost_textBox";
-            ipOfHost_textBox.Size = new Size(173, 51);
+            ipOfHost_textBox.Size = new Size(350, 39);
             ipOfHost_textBox.TabIndex = 12;
+            ipOfHost_textBox.Text = "Введите ip адрес сервера!";
+            ipOfHost_textBox.Leave += ipOfHost_textBox_Leave;
+            ipOfHost_textBox.MouseHover += ipOfHost_textBox_MouseHover;
             // 
             // startForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(375, 114);
             Controls.Add(ipOfHost_textBox);
             Controls.Add(auth_button);
             Controls.Add(reg_button);
             Name = "startForm";
+            Text = "Начало";
             ResumeLayout(false);
             PerformLayout();
         }

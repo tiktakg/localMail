@@ -6,7 +6,6 @@ namespace consoleMail
         [STAThread]
         static void Main()
         {
-         
             ApplicationConfiguration.Initialize();
             Application.Run(new startForm());
         }

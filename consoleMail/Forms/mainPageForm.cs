@@ -30,7 +30,7 @@ namespace consoleMail.Forms
 
             clientMail.connectToSever();
 
-            //  msgList = tools.getAllMsg(currentUser);
+          //  msgList = tools.getAllMsg(currentUser);
             this.Load += isNewMsg;
         }
 
@@ -66,7 +66,6 @@ namespace consoleMail.Forms
 
                 isNewMsg(this, EventArgs.Empty);
             }
-
         }
 
         private void attachFile_button_Click(object sender, EventArgs e)
@@ -89,15 +88,11 @@ namespace consoleMail.Forms
             allMesseges_listView.Items.Clear();
             allMesseges_listView.Items.AddRange(sortedMsg.Select(msg => new ListViewItem(msg)).ToArray());
         }
-
-      
         private void priorityOfMsgToSort_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             List<string> msgListWithCurrentPriority = tools.getMsgWithCurrentPrioprity(priorityOfMsgToSort_comboBox.SelectedItem.ToString(), msgList);
             allMesseges_listView.Items.Clear();
             allMesseges_listView.Items.AddRange(msgListWithCurrentPriority.Select(msg => new ListViewItem(msg)).ToArray());
-
         }
-
     }
 }

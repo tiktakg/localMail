@@ -5,14 +5,16 @@ using System.Net.Sockets;
 static class clientMail
 {
 
-    static public string host = "192.168.31.219";
+    static public string host = "";// "192.168.31.219";
     static private int port = 8888;
     static private TcpClient client = new TcpClient();
 
     static public StreamReader? Reader = null;
     static public StreamWriter? Writer = null;
 
-    static public async Task connectToSever()
+    static bool connectToServer = false;
+
+    static public async Task<bool> connectToSever()
     {
         try
         {
@@ -20,13 +22,18 @@ static class clientMail
             Reader = new StreamReader(client.GetStream());
             Writer = new StreamWriter(client.GetStream());
 
-            if (Writer is null || Reader is null)
-                return;
+            //if (Writer is null || Reader is null)
+            //    return;
+
+            connectToServer = true;
+            return true;
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
+            return false;
         }
+
     }
 
 
@@ -48,4 +55,7 @@ static class clientMail
         return message;
     }
 
+    static public bool isHostNameSet() => host == "";
+
+    static public bool isConnectToServer() => connectToServer;
 }
