@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("consoleMailSever")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5eaf38ee87d4cbd15899e6b7a01672802b978a4")]
 [assembly: System.Reflection.AssemblyProductAttribute("consoleMailSever")]
 [assembly: System.Reflection.AssemblyTitleAttribute("consoleMailSever")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

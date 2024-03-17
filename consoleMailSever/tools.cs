@@ -1,4 +1,5 @@
 ﻿using consoleMailSever.entitys;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,13 +16,13 @@ namespace consoleMailSever
         {
             using (DBContext DB = new DBContext())
             {
-               return DB.users.ToList();           
+                return DB.users.ToList();
             }
         }
 
         static public bool tryAddNewUser(users newUser, List<users> allUsers)
         {
-            foreach (users user in allUsers) 
+            foreach (users user in allUsers)
                 if (user.Login == newUser.Login)
                     return false;
 
@@ -42,6 +43,31 @@ namespace consoleMailSever
                     return true;
 
             return false;
+        }
+
+        static public string getAllMsgForCurrentUser(users currentUser)
+        {
+            List<messenges> ListOfmsgForCurrentUser = new List<messenges>();
+            using (DBContext DB = new DBContext())
+            {
+                var allMsg = DB.msg.ToList();
+
+                foreach (var msg in allMsg)
+                    if (msg.reciverOfMsg == currentUser.Login)
+                        ListOfmsgForCurrentUser.Add(msg);
+            }
+
+            return JsonConvert.SerializeObject(ListOfmsgForCurrentUser);
+
+        }
+
+        static public void saveMsgToDb(messenges msg)
+        {
+            using (DBContext DB = new DBContext())
+            {
+                DB.msg.Add(msg);
+                DB.SaveChanges();
+            }
         }
     }
 }

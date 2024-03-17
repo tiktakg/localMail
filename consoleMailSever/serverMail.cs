@@ -96,25 +96,20 @@ class ClientObject
     public async Task ProcessAsync()
     {
         try
-        {
-            string? userName = await Reader.ReadLineAsync();
-            string? message = $"{userName} вошел в чат";
-
-            await server.BroadcastMessageAsync(message, Id);
-            Console.WriteLine(message);
-      
+        {    
             while (true)
             {
                 try
                 {
-                    message = await Reader.ReadLineAsync();
+                    string? message = await Reader.ReadLineAsync();
 
                     jsonMsg jsonMsg = JsonConvert.DeserializeObject<jsonMsg>(message);
 
                     if (jsonMsg.newUser != null)
                     {
-                        
+
                         Console.WriteLine("Received a new user:");
+                        Console.WriteLine(message);
 
                         if (tools.tryAddNewUser(jsonMsg.newUser, tools.getALlUsers()))
                         {
@@ -130,13 +125,20 @@ class ClientObject
                     }
                     else if (jsonMsg.msg != null)
                     {
-                     
-                        Console.WriteLine("Received a message:");
-                     
+                        Console.WriteLine("Received a new msg:");
+                        Console.WriteLine(message);
+
+                        tools.saveMsgToDb(jsonMsg.msg);
+                        await server.BroadcastMessageAsync("{\"msg\":" + message + "}",Id);
+                        await Writer.WriteLineAsync(message);
+                        await Writer.FlushAsync();
+
                     }
-                    else if(jsonMsg.findUser != null)
+                    else if (jsonMsg.findUser != null)
                     {
                         Console.WriteLine("Received  user:");
+                        Console.WriteLine(message);
+
 
                         if (tools.isUserExist(jsonMsg.findUser))
                         {
@@ -149,6 +151,15 @@ class ClientObject
                             await Writer.FlushAsync();
                         }
                     }
+                    else if(jsonMsg.getAllMsg != null)
+                    {
+                        Console.WriteLine("Received  all Msg:");
+
+                        string allMsgJson = tools.getAllMsgForCurrentUser(jsonMsg.getAllMsg);
+                        await Writer.WriteLineAsync("{\"getAllMsg\":" + allMsgJson + "}");
+                        await Writer.FlushAsync();
+
+                    }
                     else
                     {
                         Console.WriteLine("Unknown message type");
@@ -156,18 +167,13 @@ class ClientObject
 
 
 
-                   
-                    message = $"{userName}: {message}";
-                  
-                    Console.WriteLine(message);
                     await server.BroadcastMessageAsync(message, Id);
+
+
+
                 }
                 catch
                 {
-                    message = $"{userName} покинул чат";
-                    Console.WriteLine(message);
-                    await server.BroadcastMessageAsync(message, Id);
-                    break;
                 }
             }
         }

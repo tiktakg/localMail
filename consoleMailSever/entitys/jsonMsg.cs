@@ -13,6 +13,7 @@ namespace consoleMailSever.entitys
         public users newUser { get; set; }
         public users findUser { get; set; }
         public messenges msg { get; set; }
+        public users getAllMsg {  get; set; }
 
     }
 }
