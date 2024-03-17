@@ -51,33 +51,32 @@ namespace consoleMail.Forms
             string messege = await clientMail.ReceiveMessageAsync();
 
 
-            if (messege != null && messege != "")
-            {
-                jsonMsg? jsonMsg = JsonConvert.DeserializeObject<jsonMsg>(messege);
 
-                if (jsonMsg.msg != null && tools.prepereMsg(jsonMsg.msg, currentUser.Login))
+            jsonMsg? jsonMsg = JsonConvert.DeserializeObject<jsonMsg>(messege);
+
+            if (jsonMsg.msg != null && tools.prepereMsg(jsonMsg.msg, currentUser.Login))
+            {
+                jsonMsg.msg.ThemeOfMsg = jsonMsg.msg.ThemeOfMsg + countOFMsg.ToString();
+                allMesseges_listView.Items.Add(jsonMsg.msg.ThemeOfMsg);
+                msgList.Add(jsonMsg.msg);
+                countOFMsg++;
+            }
+            else if (jsonMsg.getAllMsg != null)
+            {
+
+                foreach (var msg in jsonMsg.getAllMsg)
                 {
-                    jsonMsg.msg.ThemeOfMsg = jsonMsg.msg.ThemeOfMsg + countOFMsg.ToString();
-                    allMesseges_listView.Items.Add(jsonMsg.msg.ThemeOfMsg);
-                    msgList.Add(jsonMsg.msg);
+                    msg.ThemeOfMsg = msg.ThemeOfMsg + countOFMsg.ToString();
+                    msgList.Add(msg);
+                    allMesseges_listView.Items.Add(msg.ThemeOfMsg);
                     countOFMsg++;
                 }
-                else if (jsonMsg.getAllMsg != null)
-                {
-
-                    foreach (var msg in jsonMsg.getAllMsg)
-                    {
-                        msg.ThemeOfMsg = msg.ThemeOfMsg + countOFMsg.ToString();
-                        msgList.Add(msg);
-                        allMesseges_listView.Items.Add(msg.ThemeOfMsg);
-                        countOFMsg++;
-                    }
 
 
-                }
-
-                isNewMsg(this, EventArgs.Empty);
             }
+
+            isNewMsg(this, EventArgs.Empty);
+
         }
 
         private void attachFile_button_Click(object sender, EventArgs e)

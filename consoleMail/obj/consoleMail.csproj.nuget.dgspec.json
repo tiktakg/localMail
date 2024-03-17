@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj": {}
+    "C:\\Users\\gupli\\source\\repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj": {
+    "C:\\Users\\gupli\\source\\repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj",
+        "projectUniqueName": "C:\\Users\\gupli\\source\\repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj",
         "projectName": "consoleMail",
-        "projectPath": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj",
+        "projectPath": "C:\\Users\\gupli\\source\\repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj",
         "packagesPath": "C:\\Users\\gupli\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\obj\\",
         "projectStyle": "PackageReference",

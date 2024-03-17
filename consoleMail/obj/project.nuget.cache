@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "E2iqy30I+EU9Pl/LEGkGNetz1DJqShoWxAGJhyNL70mBnzpIiDHgZO1RKcYygs9vA+ln6/DXzTFGTcjqgSmTdA==",
+  "dgSpecHash": "Ri97yrPayBaj1pksYL88wIZY62K6KL9UaCs6VJ7Gfb5pgs5vtn8pXgOzRHjymwHDWvwYg5IkgnTn8OnFBcg+Lw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj",
+  "projectFilePath": "C:\\Users\\gupli\\source\\repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gupli\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\gupli\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512"
