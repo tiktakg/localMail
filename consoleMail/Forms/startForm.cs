@@ -30,16 +30,7 @@ namespace consoleMail
             regForm authForm = new regForm();
             authForm.Show();
         }
-        private void ipOfHost_textBox_Leave(object sender, EventArgs e)
-        {
-            if (ipOfHost_textBox.Text == "")
-                ipOfHost_textBox.Text = "Введите ip адрес сервера!";
-        }
-        private void ipOfHost_textBox_MouseHover(object sender, EventArgs e)
-        {
-            if (ipOfHost_textBox.Text == "Введите ip адрес сервера!")
-                ipOfHost_textBox.Text = "";
-        }
+  
 
         private bool checkAndConnectToHost()
         {
@@ -52,13 +43,29 @@ namespace consoleMail
             }
 
             clientMail.connectToSever();
-            
-            if(!clientMail.isConnectToServer())
+
+            if (!clientMail.isConnectToServer())
             {
                 MessageBox.Show("Ip адрес сервера не существует!", "Ошибка!");
                 return false;
             }
             return true;
+        }
+
+        private void ipOfHost_textBox_Leave(object sender, EventArgs e)
+        {
+            if (ipOfHost_textBox.Text == "")
+                ipOfHost_textBox.Text = "Введите ip адрес сервера!";
+        }
+        private void ipOfHost_textBox_MouseHover(object sender, EventArgs e)
+        {
+            if (ipOfHost_textBox.Text == "Введите ip адрес сервера!")
+                ipOfHost_textBox.Text = "";
+        }
+        private void ipOfHost_textBox_Leave(object sender, MouseEventArgs e)
+        {
+            if (ipOfHost_textBox.Text == "Введите ip адрес сервера!")
+                ipOfHost_textBox.Text = "";
         }
     }
 }

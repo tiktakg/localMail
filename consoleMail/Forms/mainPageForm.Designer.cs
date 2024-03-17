@@ -50,7 +50,7 @@
             allMesseges_listView.Size = new Size(194, 399);
             allMesseges_listView.TabIndex = 0;
             allMesseges_listView.UseCompatibleStateImageBehavior = false;
-            allMesseges_listView.ItemSelectionChanged += allMesseges_listView_ItemSelectionChanged;
+            allMesseges_listView.MouseDoubleClick += allMesseges_listView_MouseDoubleClick;
             // 
             // msg_textBox
             // 

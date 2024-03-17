@@ -47,6 +47,19 @@ namespace consoleMail
 
             return true;
         }
+        static public List<TextBox> findEmptyFiledAndSetColorRed(params TextBox[] textFields)
+        {
+            List<TextBox> emptyFields = new List<TextBox>();
+
+            foreach (var textField in textFields)
+                if (textField.Text == "")
+                {
+                    textField.BackColor = Color.Red;
+                    emptyFields.Add(textField);
+                }
+
+            return emptyFields;
+        }
 
         static public user isUserExist(string loginOfUser, string passwordOfUser)
         {
@@ -67,6 +80,8 @@ namespace consoleMail
                 return true;
             return false;
         }
+
+      
 
         static private string FileToBase64(string fileName)
         {

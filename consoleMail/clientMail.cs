@@ -18,12 +18,12 @@ static class clientMail
     {
         try
         {
+            if(connectToServer)
+                return true;
+
             client.Connect(host, port);
             Reader = new StreamReader(client.GetStream());
             Writer = new StreamWriter(client.GetStream());
-
-            //if (Writer is null || Reader is null)
-            //    return;
 
             connectToServer = true;
             return true;
@@ -33,7 +33,6 @@ static class clientMail
             Debug.WriteLine(ex.Message);
             return false;
         }
-
     }
 
 

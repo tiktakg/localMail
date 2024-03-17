@@ -19,8 +19,10 @@ namespace consoleMail.Forms
         private static user currentUser;
         private static string pathOfFile = "";
 
+
+        private int countOFMsg = 0;
         List<msg> msgList = new List<msg>();
-        
+
 
         public mainPageForm(user user)
         {
@@ -30,29 +32,24 @@ namespace consoleMail.Forms
 
             clientMail.connectToSever();
 
-          //  msgList = tools.getAllMsg(currentUser);
+            tools.getAllMsg(currentUser);
             this.Load += isNewMsg;
         }
 
         private void sendMail_button_Click(object sender, EventArgs e)
         {
             if (tools.checkEmptyFiled(theme_textBox.Text, msg_textBox.Text, receiver_textBox.Text))
-                tools.sendMsg(theme_textBox.Text, currentUser.Login, receiver_textBox.Text, msg_textBox.Text, pathOfFile, priorityOfMsg_comboBox.SelectedItem.ToString());
+                tools.sendMsg(theme_textBox.Text, currentUser.Login, receiver_textBox.Text, msg_textBox.Text, pathOfFile, priorityOfMsg_comboBox.Text);
             else
                 MessageBox.Show("Какие-то поля пустые!", "Ошибка!");
         }
 
-        private void allMesseges_listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            msg selectedMsg = msgList.Find(t => t.ThemeOfMsg == e.Item.Text);
-            showMailForm showMailForm = new showMailForm(selectedMsg);
-            showMailForm.ShowDialog();
-            return;
-        }
+
 
         private async void isNewMsg(object sender, EventArgs e)
         {
             string messege = await clientMail.ReceiveMessageAsync();
+
 
             if (messege != null && messege != "")
             {
@@ -60,8 +57,23 @@ namespace consoleMail.Forms
 
                 if (jsonMsg.msg != null && tools.prepereMsg(jsonMsg.msg, currentUser.Login))
                 {
+                    jsonMsg.msg.ThemeOfMsg = jsonMsg.msg.ThemeOfMsg + countOFMsg.ToString();
                     allMesseges_listView.Items.Add(jsonMsg.msg.ThemeOfMsg);
                     msgList.Add(jsonMsg.msg);
+                    countOFMsg++;
+                }
+                else if (jsonMsg.getAllMsg != null)
+                {
+
+                    foreach (var msg in jsonMsg.getAllMsg)
+                    {
+                        msg.ThemeOfMsg = msg.ThemeOfMsg + countOFMsg.ToString();
+                        msgList.Add(msg);
+                        allMesseges_listView.Items.Add(msg.ThemeOfMsg);
+                        countOFMsg++;
+                    }
+
+
                 }
 
                 isNewMsg(this, EventArgs.Empty);
@@ -83,7 +95,7 @@ namespace consoleMail.Forms
 
         private void sortMsg_textBox_TextChanged(object sender, EventArgs e)
         {
-            List<string> sortedMsg = tools.findSortedMsg(sortMsg_textBox.Text.Replace(" ",""), msgList);
+            List<string> sortedMsg = tools.findSortedMsg(sortMsg_textBox.Text.Replace(" ", ""), msgList);
 
             allMesseges_listView.Items.Clear();
             allMesseges_listView.Items.AddRange(sortedMsg.Select(msg => new ListViewItem(msg)).ToArray());
@@ -93,6 +105,15 @@ namespace consoleMail.Forms
             List<string> msgListWithCurrentPriority = tools.getMsgWithCurrentPrioprity(priorityOfMsgToSort_comboBox.SelectedItem.ToString(), msgList);
             allMesseges_listView.Items.Clear();
             allMesseges_listView.Items.AddRange(msgListWithCurrentPriority.Select(msg => new ListViewItem(msg)).ToArray());
+        }
+
+        private void allMesseges_listView_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListViewItem item = allMesseges_listView.HitTest(e.Location).Item;
+
+            msg selectedMsg = msgList.Find(t => t.ThemeOfMsg == item.Text);
+            showMailForm showMailForm = new showMailForm(selectedMsg);
+            showMailForm.ShowDialog();
         }
     }
 }

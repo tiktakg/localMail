@@ -15,8 +15,9 @@ namespace consoleMail.Forms
             theme_label.Text = "Тема - " + currentMsg.ThemeOfMsg;
             sender_label.Text = "Отправитель - " + currentMsg.SenderOfMsg;
             priorityOfMsg_label.Text = "Важность - " + currentMsg.Priority;
-            messege_label.Text = currentMsg.TextOfMsg;
+            messege_textBox.Text = currentMsg.TextOfMsg;
             filePath = tools.base64ToFile(currentMsg.FileOfMsg, currentMsg.FileExtension,currentMsg.FileName);
+            pathOfFile_lable.Text = "Путь файла - " + filePath;
 
             if(filePath == "")
                 openFile_button.Enabled = false;

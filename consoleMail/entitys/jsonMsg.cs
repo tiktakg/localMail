@@ -9,5 +9,7 @@ namespace consoleMail.entitys
     internal class jsonMsg
     {
         public msg msg { get; set; }
+        public List<msg> getAllMsg { get; set; }
+
     }
 }

@@ -16,26 +16,34 @@ namespace consoleMail.Forms
         public authForm()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private async void tryAuth_button_Click(object sender, EventArgs e)
         {
-            
+            tryAuth_button.Enabled = false;
+
             if (tools.checkEmptyFiled(login_textBox.Text, password_textBox.Text))
             {
                 user currentUser = tools.isUserExist(login_textBox.Text, password_textBox.Text);
                 this.Load += tryAuth_button_Click;
-               
+
                 if (await ReceiveMessage())
                 {
                     Hide();
                     mainPageForm mainPageForm = new mainPageForm(currentUser);
                     mainPageForm.Show();
                 }
-             
+
             }
             else
+            {
                 MessageBox.Show("Какие-то поля пустые!", "Ошибка!");
+                tools.findEmptyFiledAndSetColorRed(login_textBox, password_textBox);
+
+            }
+            tryAuth_button.Enabled = true;
         }
 
         private void back_button_Click(object sender, EventArgs e)
@@ -55,6 +63,13 @@ namespace consoleMail.Forms
                 MessageBox.Show("Такого пользователя не существует!", "Ошибка!");
 
             return false;
+        }
+
+        private void textBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox thisTextBox = (TextBox)sender;
+            if (thisTextBox.BackColor == Color.Red)
+                thisTextBox.BackColor = Color.White;
         }
     }
 }

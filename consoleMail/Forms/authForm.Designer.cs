@@ -40,7 +40,7 @@
             // 
             login_label.AutoSize = true;
             login_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            login_label.Location = new Point(12, 142);
+            login_label.Location = new Point(12, 18);
             login_label.Name = "login_label";
             login_label.Size = new Size(81, 32);
             login_label.TabIndex = 8;
@@ -48,16 +48,20 @@
             // 
             // login_textBox
             // 
-            login_textBox.Location = new Point(12, 193);
+            login_textBox.Font = new Font("Segoe UI", 14.25F);
+            login_textBox.Location = new Point(12, 53);
+            login_textBox.Multiline = true;
             login_textBox.Name = "login_textBox";
-            login_textBox.Size = new Size(100, 23);
+            login_textBox.Size = new Size(131, 34);
             login_textBox.TabIndex = 7;
+            login_textBox.TextAlign = HorizontalAlignment.Center;
+            login_textBox.KeyDown += textBox_KeyDown;
             // 
             // password_label
             // 
             password_label.AutoSize = true;
             password_label.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            password_label.Location = new Point(137, 142);
+            password_label.Location = new Point(155, 18);
             password_label.Name = "password_label";
             password_label.Size = new Size(96, 32);
             password_label.TabIndex = 10;
@@ -65,16 +69,21 @@
             // 
             // password_textBox
             // 
-            password_textBox.Location = new Point(137, 193);
+            password_textBox.Font = new Font("Segoe UI", 14.25F);
+            password_textBox.Location = new Point(155, 53);
+            password_textBox.Multiline = true;
             password_textBox.Name = "password_textBox";
-            password_textBox.Size = new Size(100, 23);
+            password_textBox.Size = new Size(131, 34);
             password_textBox.TabIndex = 9;
+            password_textBox.TextAlign = HorizontalAlignment.Center;
+            password_textBox.KeyDown += textBox_KeyDown;
             // 
             // tryAuth_button
             // 
-            tryAuth_button.Location = new Point(588, 388);
+            tryAuth_button.Font = new Font("Segoe UI", 11.25F);
+            tryAuth_button.Location = new Point(155, 107);
             tryAuth_button.Name = "tryAuth_button";
-            tryAuth_button.Size = new Size(200, 50);
+            tryAuth_button.Size = new Size(131, 50);
             tryAuth_button.TabIndex = 11;
             tryAuth_button.Text = "Авторизоваться";
             tryAuth_button.UseVisualStyleBackColor = true;
@@ -82,9 +91,10 @@
             // 
             // back_button
             // 
-            back_button.Location = new Point(366, 388);
+            back_button.Font = new Font("Segoe UI", 11.25F);
+            back_button.Location = new Point(12, 107);
             back_button.Name = "back_button";
-            back_button.Size = new Size(200, 50);
+            back_button.Size = new Size(131, 50);
             back_button.TabIndex = 12;
             back_button.Text = "Назад";
             back_button.UseVisualStyleBackColor = true;
@@ -94,7 +104,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(305, 171);
             Controls.Add(back_button);
             Controls.Add(tryAuth_button);
             Controls.Add(password_label);

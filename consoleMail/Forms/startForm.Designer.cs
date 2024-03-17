@@ -39,7 +39,7 @@
             reg_button.Name = "reg_button";
             reg_button.Size = new Size(172, 39);
             reg_button.TabIndex = 1;
-            reg_button.Text = "Зарегистрироватья";
+            reg_button.Text = "Зарегистрироватьcя";
             reg_button.UseVisualStyleBackColor = true;
             reg_button.Click += reg_button_Click;
             // 
@@ -63,6 +63,7 @@
             ipOfHost_textBox.TabIndex = 12;
             ipOfHost_textBox.Text = "Введите ip адрес сервера!";
             ipOfHost_textBox.Leave += ipOfHost_textBox_Leave;
+            ipOfHost_textBox.MouseDown += ipOfHost_textBox_Leave;
             ipOfHost_textBox.MouseHover += ipOfHost_textBox_MouseHover;
             // 
             // startForm

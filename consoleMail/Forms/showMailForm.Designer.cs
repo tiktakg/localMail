@@ -30,9 +30,10 @@
         {
             theme_label = new Label();
             sender_label = new Label();
-            messege_label = new Label();
             openFile_button = new Button();
             priorityOfMsg_label = new Label();
+            pathOfFile_lable = new Label();
+            messege_textBox = new TextBox();
             SuspendLayout();
             // 
             // theme_label
@@ -55,16 +56,6 @@
             sender_label.TabIndex = 1;
             sender_label.Text = "Отправитель - ";
             // 
-            // messege_label
-            // 
-            messege_label.AutoSize = true;
-            messege_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            messege_label.Location = new Point(12, 120);
-            messege_label.Name = "messege_label";
-            messege_label.Size = new Size(128, 25);
-            messege_label.TabIndex = 2;
-            messege_label.Text = "Сообщение -";
-            // 
             // openFile_button
             // 
             openFile_button.Location = new Point(12, 406);
@@ -85,14 +76,34 @@
             priorityOfMsg_label.TabIndex = 4;
             priorityOfMsg_label.Text = "Важность -";
             // 
+            // pathOfFile_lable
+            // 
+            pathOfFile_lable.AutoSize = true;
+            pathOfFile_lable.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pathOfFile_lable.Location = new Point(202, 417);
+            pathOfFile_lable.Name = "pathOfFile_lable";
+            pathOfFile_lable.Size = new Size(106, 21);
+            pathOfFile_lable.TabIndex = 5;
+            pathOfFile_lable.Text = "Путь файла - ";
+            // 
+            // messege_textBox
+            // 
+            messege_textBox.Enabled = false;
+            messege_textBox.Location = new Point(12, 113);
+            messege_textBox.Multiline = true;
+            messege_textBox.Name = "messege_textBox";
+            messege_textBox.Size = new Size(776, 287);
+            messege_textBox.TabIndex = 6;
+            // 
             // showMailForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(messege_textBox);
+            Controls.Add(pathOfFile_lable);
             Controls.Add(priorityOfMsg_label);
             Controls.Add(openFile_button);
-            Controls.Add(messege_label);
             Controls.Add(sender_label);
             Controls.Add(theme_label);
             Name = "showMailForm";
@@ -105,8 +116,9 @@
 
         private Label theme_label;
         private Label sender_label;
-        private Label messege_label;
         private Button openFile_button;
         private Label priorityOfMsg_label;
+        private Label pathOfFile_lable;
+        private TextBox messege_textBox;
     }
 }
