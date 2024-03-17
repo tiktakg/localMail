@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\data\\visualStudioProjects\\consoleMailServerAndClient\\consoleMail\\consoleMail.csproj": {}
+    "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj": {}
   },
   "projects": {
-    "D:\\data\\visualStudioProjects\\consoleMailServerAndClient\\consoleMail\\consoleMail.csproj": {
+    "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\data\\visualStudioProjects\\consoleMailServerAndClient\\consoleMail\\consoleMail.csproj",
+        "projectUniqueName": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj",
         "projectName": "consoleMail",
-        "projectPath": "D:\\data\\visualStudioProjects\\consoleMailServerAndClient\\consoleMail\\consoleMail.csproj",
+        "projectPath": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj",
         "packagesPath": "C:\\Users\\gupli\\.nuget\\packages\\",
-        "outputPath": "D:\\data\\visualStudioProjects\\consoleMailServerAndClient\\consoleMail\\obj\\",
+        "outputPath": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\programs\\Visual studio\\VisualStudioSdk\\NuGetPackages"

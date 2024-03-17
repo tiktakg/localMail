@@ -4158,11 +4158,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\data\\visualStudioProjects\\consoleMailServerAndClient\\consoleMailSever\\consoleMailSever.csproj",
+      "projectUniqueName": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMailSever\\consoleMailSever.csproj",
       "projectName": "consoleMailSever",
-      "projectPath": "D:\\data\\visualStudioProjects\\consoleMailServerAndClient\\consoleMailSever\\consoleMailSever.csproj",
+      "projectPath": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMailSever\\consoleMailSever.csproj",
       "packagesPath": "C:\\Users\\gupli\\.nuget\\packages\\",
-      "outputPath": "D:\\data\\visualStudioProjects\\consoleMailServerAndClient\\consoleMailSever\\obj\\",
+      "outputPath": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMailSever\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\programs\\Visual studio\\VisualStudioSdk\\NuGetPackages"
