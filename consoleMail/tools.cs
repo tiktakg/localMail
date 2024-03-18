@@ -3,6 +3,9 @@ using Microsoft.VisualBasic.ApplicationServices;
 using Microsoft.VisualBasic.Logging;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace consoleMail
 {
@@ -19,6 +22,7 @@ namespace consoleMail
 
 
         }
+
         static public void sendMsg(string themeOfMsg, string senderOfMsg, string recieverOfMsg, string textOfMsg, string fileOfMsg, string priority)
         {
             string fileExtension = "";
@@ -129,8 +133,53 @@ namespace consoleMail
         {
             return allMsg.Where(m =>
             m.ThemeOfMsg.Contains(strToFind) ||
-            m.ReciverOfMsg.Contains(strToFind) ||
+            m.SenderOfMsg.Contains(strToFind) ||
             m.TextOfMsg.Contains(strToFind)).Select(t => t.ThemeOfMsg).ToList();
         }
+
+        static public string getHostFromFile(string hostNameFromUser)
+        {
+            string newPathOfFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filePath = Path.Combine(newPathOfFile, "fileOfHostName.txt");
+            string firstLine = "";
+
+            if (File.Exists(filePath))
+            {
+              
+                try
+                {
+                    if (hostNameFromUser == "")
+                        using (StreamReader reader = new StreamReader(filePath))
+                        {
+                            firstLine = reader.ReadLine();
+                            return firstLine;
+                        }
+                    else
+                    {
+                        using (StreamWriter writer = new StreamWriter(filePath, false))
+                        {
+                            writer.Write(hostNameFromUser);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ошибка при чтении файла: " + ex.Message);
+                }
+
+               
+            }
+            else
+            {                
+                using (StreamWriter writer = File.CreateText(filePath))
+                {
+                    writer.WriteLine(hostNameFromUser);
+                }
+            }
+
+
+            return hostNameFromUser;
+        }
+
     }
 }

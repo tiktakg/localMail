@@ -18,6 +18,7 @@ namespace consoleMail.entitys
         public string FileOfMsg { get; set; }
         public string FileExtension { get; set; }
         public string FileName {  get; set; }
+
         
 
 

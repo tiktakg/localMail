@@ -386,9 +386,9 @@ C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\
 C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\consoleMailSever.AssemblyInfo.cs
 C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\consoleMailSever.csproj.CoreCompileInputs.cache
 C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\consoleMailSever.sourcelink.json
-C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\consoleMailSever.csproj.CopyComplete
 C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\consoleMailSever.dll
 C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\refint\consoleMailSever.dll
 C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\consoleMailSever.pdb
 C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\consoleMailSever.genruntimeconfig.cache
 C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\ref\consoleMailSever.dll
+C:\Users\gupli\Source\Repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\consoleM.5A767E86.Up2Date

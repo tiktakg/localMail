@@ -34,8 +34,20 @@ namespace consoleMail
 
         private bool checkAndConnectToHost()
         {
+            string hostName = "";
             if (ipOfHost_textBox.Text != "Введите ip адрес сервера!")
-                clientMail.host = ipOfHost_textBox.Text;
+                hostName  = tools.getHostFromFile(ipOfHost_textBox.Text);
+
+            if (hostName == "" && ipOfHost_textBox.Text == "Введите ip адрес сервера!")
+            {
+                hostName= tools.getHostFromFile("");
+                clientMail.host = hostName;
+
+            }
+            else if(hostName != "")
+            {
+                clientMail.host = hostName;
+            }
             else if (clientMail.isHostNameSet())
             {
                 MessageBox.Show("Ip адрес сервера не введен!", "Ошибка!");

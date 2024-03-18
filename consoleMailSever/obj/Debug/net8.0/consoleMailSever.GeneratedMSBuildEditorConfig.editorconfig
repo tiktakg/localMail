@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = consoleMailSever
-build_property.ProjectDir = C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\
+build_property.ProjectDir = C:\Users\gupli\Source\Repos\tiktakg\localMail\consoleMailSever\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

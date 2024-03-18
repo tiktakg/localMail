@@ -1,16 +1,10 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 using consoleMail.entitys;
+using Windows.UI.Notifications;
+using Microsoft.Toolkit.Uwp.Notifications;
+using System.Threading.Tasks;
+using Windows.Data.Xml.Dom;
 
 namespace consoleMail.Forms
 {
@@ -23,23 +17,40 @@ namespace consoleMail.Forms
         private int countOFMsg = 0;
         List<msg> msgList = new List<msg>();
 
+        private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+
 
         public mainPageForm(user user)
         {
             InitializeComponent();
-
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            timer.Interval = 5000;
+            timer.Tick += Timer_Tick;
             currentUser = user;
 
             clientMail.connectToSever();
 
+            allMesseges_listView.View = View.Details;
+            allMesseges_listView.Columns.Add("Тема сообщения", 100);
+            allMesseges_listView.Columns.Add("Отправитель", 100);
             tools.getAllMsg(currentUser);
             this.Load += isNewMsg;
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+            sendMail_button.Enabled = true;
+            timer.Stop();
         }
 
         private void sendMail_button_Click(object sender, EventArgs e)
         {
             if (tools.checkEmptyFiled(theme_textBox.Text, msg_textBox.Text, receiver_textBox.Text))
+            {
+                sendMail_button.Enabled = false;
+                timer.Start();
                 tools.sendMsg(theme_textBox.Text, currentUser.Login, receiver_textBox.Text, msg_textBox.Text, pathOfFile, priorityOfMsg_comboBox.Text);
+            }
             else
                 MessageBox.Show("Какие-то поля пустые!", "Ошибка!");
         }
@@ -49,36 +60,48 @@ namespace consoleMail.Forms
         private async void isNewMsg(object sender, EventArgs e)
         {
             string messege = await clientMail.ReceiveMessageAsync();
+            jsonMsg? jsonMsg = null;
 
-
-
-            jsonMsg? jsonMsg = JsonConvert.DeserializeObject<jsonMsg>(messege);
-
-            if (jsonMsg.msg != null && tools.prepereMsg(jsonMsg.msg, currentUser.Login))
+            try
             {
-                jsonMsg.msg.ThemeOfMsg = jsonMsg.msg.ThemeOfMsg + countOFMsg.ToString();
-                allMesseges_listView.Items.Add(jsonMsg.msg.ThemeOfMsg);
-                msgList.Add(jsonMsg.msg);
-                countOFMsg++;
-            }
-            else if (jsonMsg.getAllMsg != null)
-            {
-
-                foreach (var msg in jsonMsg.getAllMsg)
+                jsonMsg = JsonConvert.DeserializeObject<jsonMsg>(messege);
+                if (jsonMsg.msg != null && tools.prepereMsg(jsonMsg.msg, currentUser.Login))
                 {
-                    msg.ThemeOfMsg = msg.ThemeOfMsg + countOFMsg.ToString();
-                    msgList.Add(msg);
-                    allMesseges_listView.Items.Add(msg.ThemeOfMsg);
-                    countOFMsg++;
-                }
+                   
+                    jsonMsg.msg.ThemeOfMsg = jsonMsg.msg.ThemeOfMsg + countOFMsg.ToString();
+                    allMesseges_listView.Items.Add(new ListViewItem(new string[] { jsonMsg.msg.ThemeOfMsg, jsonMsg.msg.SenderOfMsg }));
 
+                    msgList.Add(jsonMsg.msg);
+                    countOFMsg++;
+                   
+                    MessageBox.Show($"Тема сообщения - {jsonMsg.msg.ThemeOfMsg} \nОтправитель - {jsonMsg.msg.SenderOfMsg}!", "Сообщение!");
+                }
+                else if (jsonMsg.getAllMsg != null)
+                {
+
+                    foreach (var msg in jsonMsg.getAllMsg)
+                    {
+                        msg.ThemeOfMsg = msg.ThemeOfMsg + countOFMsg.ToString();
+                        msgList.Add(msg);
+                        ListViewItem listViewItem = new ListViewItem(new string[] { msg.ThemeOfMsg, msg.SenderOfMsg });
+
+                        allMesseges_listView.Items.Add(listViewItem);
+                        countOFMsg++;
+                    }
+
+
+                }
+            }
+            catch
+            {
 
             }
+
+
 
             isNewMsg(this, EventArgs.Empty);
 
         }
-
         private void attachFile_button_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -114,5 +137,6 @@ namespace consoleMail.Forms
             showMailForm showMailForm = new showMailForm(selectedMsg);
             showMailForm.ShowDialog();
         }
+
     }
 }

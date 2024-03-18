@@ -52,7 +52,7 @@ class ServerObject
         }
     }
  
-    // трансляция сообщения подключенным клиентам
+    
     protected internal async Task BroadcastMessageAsync(string message, string id)
     {
         foreach (var client in  clients)
@@ -174,6 +174,7 @@ class ClientObject
                 }
                 catch
                 {
+                    Console.WriteLine("catch");
                 }
             }
         }
@@ -183,6 +184,7 @@ class ClientObject
         }
         finally
         {
+            Console.WriteLine("finally catch");
             server.RemoveConnection(Id);
         }
     }
