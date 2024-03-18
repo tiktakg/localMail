@@ -16,6 +16,8 @@ namespace consoleMailSever.entitys
         public string fileOfMsg { get; set; }
         public string fileExtension { get; set; }
         public string fileName { get; set; }
+        public DateTime DateOfMsg { get; set; }
+
 
     }
 }

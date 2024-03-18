@@ -18,12 +18,12 @@ namespace consoleMail.entitys
         public string FileOfMsg { get; set; }
         public string FileExtension { get; set; }
         public string FileName {  get; set; }
-
+        public string DateOfMsg {  get; set; }
         
 
 
 
-        public msg(string themeOfMsg, string senderOfMsg,string reciverOfMsg, string textOfMsg,string priority, string fileOfMsg = "", string fileExtension = "", string fileName = "")
+        public msg(string themeOfMsg, string senderOfMsg,string reciverOfMsg, string textOfMsg,string priority, string fileOfMsg = "", string fileExtension = "", string fileName = "", DateTime dateOfMsg = default(DateTime))
         {
             ThemeOfMsg = themeOfMsg;
             SenderOfMsg = senderOfMsg;
@@ -33,7 +33,10 @@ namespace consoleMail.entitys
             FileOfMsg = fileOfMsg;
             FileExtension = fileExtension;
             FileName = fileName;
-         
+            DateOfMsg = dateOfMsg.ToString("MM-dd-yyyy");
+
+
+
         }
     }
 }

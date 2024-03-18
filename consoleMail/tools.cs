@@ -23,7 +23,7 @@ namespace consoleMail
 
         }
 
-        static public void sendMsg(string themeOfMsg, string senderOfMsg, string recieverOfMsg, string textOfMsg, string fileOfMsg, string priority)
+        static public void sendMsg(string themeOfMsg, string senderOfMsg, string recieverOfMsg, string textOfMsg, string fileOfMsg, string priority, DateTime dateOfMsg)
         {
             string fileExtension = "";
             string fileName = "";
@@ -37,7 +37,7 @@ namespace consoleMail
                 fileOfMsg = FileToBase64(fileOfMsg);
             }
 
-            msg newMsg = new msg(themeOfMsg, senderOfMsg, recieverOfMsg, textOfMsg, priority, fileOfMsg, fileExtension, fileName);
+            msg newMsg = new msg(themeOfMsg, senderOfMsg, recieverOfMsg, textOfMsg, priority, fileOfMsg, fileExtension, fileName, dateOfMsg);
             string jsonMsg = JsonConvert.SerializeObject(newMsg);
 
             clientMail.SendMessageAsync("{\"msg\":" + jsonMsg + "}").Wait();
@@ -85,7 +85,7 @@ namespace consoleMail
             return false;
         }
 
-      
+
 
         static private string FileToBase64(string fileName)
         {
@@ -116,25 +116,25 @@ namespace consoleMail
             return new List<msg>();
         }
 
-        static public List<string> getMsgWithCurrentPrioprity(string priority, List<msg> allMsg)
+        static public List<msg> getMsgWithCurrentPrioprity(string priority, List<msg> allMsg)
         {
-            List<string> msgListWithPriority = new List<string>();
+            List<msg> msgListWithPriority = new List<msg>();
 
             if (priority == "Все")
-                return allMsg.Select(t => t.ThemeOfMsg).ToList();
+                return allMsg.ToList();
 
 
-            msgListWithPriority = allMsg.FindAll(p => p.Priority == priority).Select(t => t.ThemeOfMsg).ToList();
+            msgListWithPriority = allMsg.FindAll(p => p.Priority == priority).ToList();
 
             return msgListWithPriority;
         }
 
-        static public List<string> findSortedMsg(string strToFind, List<msg> allMsg)
+        static public List<msg> findSortedMsg(string strToFind, List<msg> allMsg)
         {
             return allMsg.Where(m =>
             m.ThemeOfMsg.Contains(strToFind) ||
             m.SenderOfMsg.Contains(strToFind) ||
-            m.TextOfMsg.Contains(strToFind)).Select(t => t.ThemeOfMsg).ToList();
+            m.TextOfMsg.Contains(strToFind)).ToList();
         }
 
         static public string getHostFromFile(string hostNameFromUser)
@@ -145,7 +145,7 @@ namespace consoleMail
 
             if (File.Exists(filePath))
             {
-              
+
                 try
                 {
                     if (hostNameFromUser == "")
@@ -167,10 +167,10 @@ namespace consoleMail
                     Console.WriteLine("Ошибка при чтении файла: " + ex.Message);
                 }
 
-               
+
             }
             else
-            {                
+            {
                 using (StreamWriter writer = File.CreateText(filePath))
                 {
                     writer.WriteLine(hostNameFromUser);
@@ -181,5 +181,30 @@ namespace consoleMail
             return hostNameFromUser;
         }
 
+        internal static List<msg> getMsgWithSortDate(string sortedDate, List<msg> allMsg)
+        {
+
+            List<msg> allDate = null;
+
+            if (sortedDate == "Все")
+                allDate = allMsg.ToList();
+            else if (sortedDate == "Самые последние")
+                allDate = allMsg.OrderBy(m => DateTime.TryParseExact(m.DateOfMsg, "MM-dd-yyyy", null, System.Globalization.DateTimeStyles.None, out var parsedDate) ? parsedDate : DateTime.MaxValue)
+                .ToList();
+            else if (sortedDate == "Самые первые")
+                allDate = allMsg
+                .OrderByDescending(m => DateTime.TryParseExact(m.DateOfMsg, "MM-dd-yyyy", null, System.Globalization.DateTimeStyles.None, out var parsedDate) ? parsedDate : DateTime.MinValue)
+                .ToList();
+
+            return allDate;
+
+        }
+
+        internal static List<msg> getMsgWithCurrentDate(string currentDate, List<msg> allMsg)
+        {
+            DateTime parseDateTime = DateTime.Parse(currentDate);
+            currentDate = parseDateTime.ToString("MM-dd-yyyy");
+            return allMsg.FindAll(p => p.DateOfMsg == currentDate);
+        }
     }
 }

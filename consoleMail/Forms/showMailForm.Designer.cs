@@ -34,6 +34,7 @@
             priorityOfMsg_label = new Label();
             pathOfFile_lable = new Label();
             messege_textBox = new TextBox();
+            date_label = new Label();
             SuspendLayout();
             // 
             // theme_label
@@ -89,17 +90,28 @@
             // messege_textBox
             // 
             messege_textBox.Enabled = false;
-            messege_textBox.Location = new Point(12, 113);
+            messege_textBox.Location = new Point(12, 148);
             messege_textBox.Multiline = true;
             messege_textBox.Name = "messege_textBox";
-            messege_textBox.Size = new Size(776, 287);
+            messege_textBox.Size = new Size(776, 252);
             messege_textBox.TabIndex = 6;
+            // 
+            // date_label
+            // 
+            date_label.AutoSize = true;
+            date_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            date_label.Location = new Point(12, 120);
+            date_label.Name = "date_label";
+            date_label.Size = new Size(66, 25);
+            date_label.TabIndex = 7;
+            date_label.Text = "Дата -";
             // 
             // showMailForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(date_label);
             Controls.Add(messege_textBox);
             Controls.Add(pathOfFile_lable);
             Controls.Add(priorityOfMsg_label);
@@ -120,5 +132,6 @@
         private Label priorityOfMsg_label;
         private Label pathOfFile_lable;
         private TextBox messege_textBox;
+        private Label date_label;
     }
 }

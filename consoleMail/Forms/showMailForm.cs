@@ -16,12 +16,13 @@ namespace consoleMail.Forms
             sender_label.Text = "Отправитель - " + currentMsg.SenderOfMsg;
             priorityOfMsg_label.Text = "Важность - " + currentMsg.Priority;
             messege_textBox.Text = currentMsg.TextOfMsg;
-            filePath = tools.base64ToFile(currentMsg.FileOfMsg, currentMsg.FileExtension,currentMsg.FileName);
+            date_label.Text = "Дата отправки - " + currentMsg.DateOfMsg;
+            filePath = tools.base64ToFile(currentMsg.FileOfMsg, currentMsg.FileExtension, currentMsg.FileName);
             pathOfFile_lable.Text = "Путь файла - " + filePath;
 
-            if(filePath == "")
+            if (filePath == "")
                 openFile_button.Enabled = false;
-        }     
+        }
 
         private void openFile_button_Click(object sender, EventArgs e)
         {

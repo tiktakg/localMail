@@ -5,7 +5,7 @@ using System.Net.Sockets;
 static class clientMail
 {
 
-    static public string host = "";// "192.168.31.219";
+    static public string host = "";
     static private int port = 8888;
     static private TcpClient client = new TcpClient();
 

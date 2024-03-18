@@ -41,34 +41,33 @@
             priorityOfMsg_comboBox = new ComboBox();
             priorityOfMsg_label = new Label();
             priorityOfMsgToSort_comboBox = new ComboBox();
+            takeDate_TimePiker = new DateTimePicker();
+            sortByDate_ComboBox = new ComboBox();
             SuspendLayout();
             // 
             // allMesseges_listView
             // 
             allMesseges_listView.LabelWrap = false;
-            allMesseges_listView.Location = new Point(14, 52);
-            allMesseges_listView.Margin = new Padding(3, 4, 3, 4);
+            allMesseges_listView.Location = new Point(12, 97);
             allMesseges_listView.Name = "allMesseges_listView";
-            allMesseges_listView.Size = new Size(221, 531);
+            allMesseges_listView.Size = new Size(194, 341);
             allMesseges_listView.TabIndex = 0;
             allMesseges_listView.UseCompatibleStateImageBehavior = false;
             allMesseges_listView.MouseDoubleClick += allMesseges_listView_MouseDoubleClick;
             // 
             // msg_textBox
             // 
-            msg_textBox.Location = new Point(242, 129);
-            msg_textBox.Margin = new Padding(3, 4, 3, 4);
+            msg_textBox.Location = new Point(212, 97);
             msg_textBox.Multiline = true;
             msg_textBox.Name = "msg_textBox";
-            msg_textBox.Size = new Size(662, 405);
+            msg_textBox.Size = new Size(580, 305);
             msg_textBox.TabIndex = 1;
             // 
             // sendMail_button
             // 
-            sendMail_button.Location = new Point(762, 544);
-            sendMail_button.Margin = new Padding(3, 4, 3, 4);
+            sendMail_button.Location = new Point(667, 408);
             sendMail_button.Name = "sendMail_button";
-            sendMail_button.Size = new Size(143, 40);
+            sendMail_button.Size = new Size(125, 30);
             sendMail_button.TabIndex = 2;
             sendMail_button.Text = "Отправить";
             sendMail_button.UseVisualStyleBackColor = true;
@@ -76,10 +75,9 @@
             // 
             // attachFile_button
             // 
-            attachFile_button.Location = new Point(242, 544);
-            attachFile_button.Margin = new Padding(3, 4, 3, 4);
+            attachFile_button.Location = new Point(212, 408);
             attachFile_button.Name = "attachFile_button";
-            attachFile_button.Size = new Size(143, 40);
+            attachFile_button.Size = new Size(125, 30);
             attachFile_button.TabIndex = 3;
             attachFile_button.Text = "Прикрепить файл";
             attachFile_button.UseVisualStyleBackColor = true;
@@ -89,57 +87,54 @@
             // 
             nameOfFile_label.AutoSize = true;
             nameOfFile_label.Font = new Font("Segoe UI Semilight", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nameOfFile_label.Location = new Point(392, 544);
+            nameOfFile_label.Location = new Point(343, 408);
             nameOfFile_label.Name = "nameOfFile_label";
-            nameOfFile_label.Size = new Size(216, 37);
+            nameOfFile_label.Size = new Size(170, 30);
             nameOfFile_label.TabIndex = 4;
             nameOfFile_label.Text = "Название файла";
             // 
             // theme_textBox
             // 
-            theme_textBox.Location = new Point(242, 13);
-            theme_textBox.Margin = new Padding(3, 4, 3, 4);
+            theme_textBox.Location = new Point(212, 10);
             theme_textBox.Multiline = true;
             theme_textBox.Name = "theme_textBox";
-            theme_textBox.Size = new Size(138, 29);
+            theme_textBox.Size = new Size(121, 23);
             theme_textBox.TabIndex = 5;
             // 
             // theme_label
             // 
             theme_label.AutoSize = true;
             theme_label.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            theme_label.Location = new Point(399, 13);
+            theme_label.Location = new Point(349, 10);
             theme_label.Name = "theme_label";
-            theme_label.Size = new Size(166, 28);
+            theme_label.Size = new Size(130, 21);
             theme_label.TabIndex = 6;
             theme_label.Text = "Тема сообщения";
             // 
             // receiver_textBox
             // 
-            receiver_textBox.Location = new Point(242, 52);
-            receiver_textBox.Margin = new Padding(3, 4, 3, 4);
+            receiver_textBox.Location = new Point(212, 39);
             receiver_textBox.Multiline = true;
             receiver_textBox.Name = "receiver_textBox";
-            receiver_textBox.Size = new Size(138, 29);
+            receiver_textBox.Size = new Size(121, 23);
             receiver_textBox.TabIndex = 7;
             // 
             // receiver_label
             // 
             receiver_label.AutoSize = true;
             receiver_label.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            receiver_label.Location = new Point(399, 55);
+            receiver_label.Location = new Point(349, 41);
             receiver_label.Name = "receiver_label";
-            receiver_label.Size = new Size(69, 28);
+            receiver_label.Size = new Size(54, 21);
             receiver_label.TabIndex = 8;
             receiver_label.Text = "Кому?";
             // 
             // sortMsg_textBox
             // 
-            sortMsg_textBox.Location = new Point(128, 13);
-            sortMsg_textBox.Margin = new Padding(3, 4, 3, 4);
+            sortMsg_textBox.Location = new Point(12, 65);
             sortMsg_textBox.Multiline = true;
             sortMsg_textBox.Name = "sortMsg_textBox";
-            sortMsg_textBox.Size = new Size(107, 29);
+            sortMsg_textBox.Size = new Size(194, 23);
             sortMsg_textBox.TabIndex = 9;
             sortMsg_textBox.TextChanged += sortMsg_textBox_TextChanged;
             // 
@@ -147,10 +142,9 @@
             // 
             priorityOfMsg_comboBox.FormattingEnabled = true;
             priorityOfMsg_comboBox.Items.AddRange(new object[] { "Не важно", "Важно!", "Очень важно!" });
-            priorityOfMsg_comboBox.Location = new Point(242, 91);
-            priorityOfMsg_comboBox.Margin = new Padding(3, 4, 3, 4);
+            priorityOfMsg_comboBox.Location = new Point(212, 68);
             priorityOfMsg_comboBox.Name = "priorityOfMsg_comboBox";
-            priorityOfMsg_comboBox.Size = new Size(138, 28);
+            priorityOfMsg_comboBox.Size = new Size(121, 23);
             priorityOfMsg_comboBox.TabIndex = 10;
             priorityOfMsg_comboBox.Text = "Не важно";
             // 
@@ -158,9 +152,9 @@
             // 
             priorityOfMsg_label.AutoSize = true;
             priorityOfMsg_label.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            priorityOfMsg_label.Location = new Point(399, 93);
+            priorityOfMsg_label.Location = new Point(349, 70);
             priorityOfMsg_label.Name = "priorityOfMsg_label";
-            priorityOfMsg_label.Size = new Size(209, 28);
+            priorityOfMsg_label.Size = new Size(164, 21);
             priorityOfMsg_label.TabIndex = 11;
             priorityOfMsg_label.Text = "Важность сообщения";
             // 
@@ -168,19 +162,39 @@
             // 
             priorityOfMsgToSort_comboBox.FormattingEnabled = true;
             priorityOfMsgToSort_comboBox.Items.AddRange(new object[] { "Все", "Не важно", "Важно!", "Очень важно!" });
-            priorityOfMsgToSort_comboBox.Location = new Point(14, 13);
-            priorityOfMsgToSort_comboBox.Margin = new Padding(3, 4, 3, 4);
+            priorityOfMsgToSort_comboBox.Location = new Point(12, 10);
             priorityOfMsgToSort_comboBox.Name = "priorityOfMsgToSort_comboBox";
-            priorityOfMsgToSort_comboBox.Size = new Size(107, 28);
+            priorityOfMsgToSort_comboBox.Size = new Size(94, 23);
             priorityOfMsgToSort_comboBox.TabIndex = 12;
             priorityOfMsgToSort_comboBox.Text = "Все";
             priorityOfMsgToSort_comboBox.SelectionChangeCommitted += priorityOfMsgToSort_comboBox_SelectionChangeCommitted;
             // 
+            // takeDate_TimePiker
+            // 
+            takeDate_TimePiker.Location = new Point(12, 39);
+            takeDate_TimePiker.Name = "takeDate_TimePiker";
+            takeDate_TimePiker.Size = new Size(194, 23);
+            takeDate_TimePiker.TabIndex = 13;
+            takeDate_TimePiker.ValueChanged += takeDate_TimePiker_ValueChanged;
+            // 
+            // sortByDate_ComboBox
+            // 
+            sortByDate_ComboBox.FormattingEnabled = true;
+            sortByDate_ComboBox.Items.AddRange(new object[] { "Все", "Самые последние", "Самые первые" });
+            sortByDate_ComboBox.Location = new Point(112, 10);
+            sortByDate_ComboBox.Name = "sortByDate_ComboBox";
+            sortByDate_ComboBox.Size = new Size(94, 23);
+            sortByDate_ComboBox.TabIndex = 14;
+            sortByDate_ComboBox.Text = "Все";
+            sortByDate_ComboBox.SelectionChangeCommitted += sortByDate_ComboBox_SelectionChangeCommitted;
+            // 
             // mainPageForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
+            Controls.Add(sortByDate_ComboBox);
+            Controls.Add(takeDate_TimePiker);
             Controls.Add(priorityOfMsgToSort_comboBox);
             Controls.Add(priorityOfMsg_label);
             Controls.Add(priorityOfMsg_comboBox);
@@ -194,7 +208,6 @@
             Controls.Add(sendMail_button);
             Controls.Add(msg_textBox);
             Controls.Add(allMesseges_listView);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "mainPageForm";
             Text = "Главная страница";
             ResumeLayout(false);
@@ -216,5 +229,7 @@
         private ComboBox priorityOfMsg_comboBox;
         private Label priorityOfMsg_label;
         private ComboBox priorityOfMsgToSort_comboBox;
+        private DateTimePicker takeDate_TimePiker;
+        private ComboBox sortByDate_ComboBox;
     }
 }

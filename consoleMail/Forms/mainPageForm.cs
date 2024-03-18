@@ -49,14 +49,11 @@ namespace consoleMail.Forms
             {
                 sendMail_button.Enabled = false;
                 timer.Start();
-                tools.sendMsg(theme_textBox.Text, currentUser.Login, receiver_textBox.Text, msg_textBox.Text, pathOfFile, priorityOfMsg_comboBox.Text);
+                tools.sendMsg(theme_textBox.Text, currentUser.Login, receiver_textBox.Text, msg_textBox.Text, pathOfFile, priorityOfMsg_comboBox.Text, DateTime.Now);
             }
             else
                 MessageBox.Show("Какие-то поля пустые!", "Ошибка!");
         }
-
-
-
         private async void isNewMsg(object sender, EventArgs e)
         {
             string messege = await clientMail.ReceiveMessageAsync();
@@ -67,13 +64,13 @@ namespace consoleMail.Forms
                 jsonMsg = JsonConvert.DeserializeObject<jsonMsg>(messege);
                 if (jsonMsg.msg != null && tools.prepereMsg(jsonMsg.msg, currentUser.Login))
                 {
-                   
+
                     jsonMsg.msg.ThemeOfMsg = jsonMsg.msg.ThemeOfMsg + countOFMsg.ToString();
                     allMesseges_listView.Items.Add(new ListViewItem(new string[] { jsonMsg.msg.ThemeOfMsg, jsonMsg.msg.SenderOfMsg }));
 
                     msgList.Add(jsonMsg.msg);
                     countOFMsg++;
-                   
+
                     MessageBox.Show($"Тема сообщения - {jsonMsg.msg.ThemeOfMsg} \nОтправитель - {jsonMsg.msg.SenderOfMsg}!", "Сообщение!");
                 }
                 else if (jsonMsg.getAllMsg != null)
@@ -94,10 +91,7 @@ namespace consoleMail.Forms
             }
             catch
             {
-
             }
-
-
 
             isNewMsg(this, EventArgs.Empty);
 
@@ -114,21 +108,19 @@ namespace consoleMail.Forms
             else
                 nameOfFile_label.Text = "Файл не выбран";
         }
-
         private void sortMsg_textBox_TextChanged(object sender, EventArgs e)
         {
-            List<string> sortedMsg = tools.findSortedMsg(sortMsg_textBox.Text.Replace(" ", ""), msgList);
+            List<msg> sortedMsg = tools.findSortedMsg(sortMsg_textBox.Text.Replace(" ", ""), msgList);
 
             allMesseges_listView.Items.Clear();
-            allMesseges_listView.Items.AddRange(sortedMsg.Select(msg => new ListViewItem(msg)).ToArray());
+            allMesseges_listView.Items.AddRange(sortedMsg.Select(msg => new ListViewItem(new string[] { msg.ThemeOfMsg, msg.SenderOfMsg })).ToArray());
         }
         private void priorityOfMsgToSort_comboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            List<string> msgListWithCurrentPriority = tools.getMsgWithCurrentPrioprity(priorityOfMsgToSort_comboBox.SelectedItem.ToString(), msgList);
+            List<msg> msgListWithCurrentPriority = tools.getMsgWithCurrentPrioprity(priorityOfMsgToSort_comboBox.SelectedItem.ToString(), msgList);
             allMesseges_listView.Items.Clear();
-            allMesseges_listView.Items.AddRange(msgListWithCurrentPriority.Select(msg => new ListViewItem(msg)).ToArray());
+            allMesseges_listView.Items.AddRange(msgListWithCurrentPriority.Select(msg => new ListViewItem(new string[] { msg.ThemeOfMsg, msg.SenderOfMsg })).ToArray());
         }
-
         private void allMesseges_listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewItem item = allMesseges_listView.HitTest(e.Location).Item;
@@ -137,6 +129,18 @@ namespace consoleMail.Forms
             showMailForm showMailForm = new showMailForm(selectedMsg);
             showMailForm.ShowDialog();
         }
+        private void sortByDate_ComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            List<msg> msgListWithCurrentDate = tools.getMsgWithSortDate(sortByDate_ComboBox.SelectedItem.ToString(), msgList);
+            allMesseges_listView.Items.Clear();
+            allMesseges_listView.Items.AddRange(msgListWithCurrentDate.Select(msg => new ListViewItem(new string[] { msg.ThemeOfMsg, msg.SenderOfMsg })).ToArray());
+        }
+        private void takeDate_TimePiker_ValueChanged(object sender, EventArgs e)
+        {
+            List<msg> msgListWithCurrentDate = tools.getMsgWithCurrentDate(takeDate_TimePiker.Text.ToString(), msgList);
 
+            allMesseges_listView.Items.Clear();
+            allMesseges_listView.Items.AddRange(msgListWithCurrentDate.Select(msg => new ListViewItem(new string[] { msg.ThemeOfMsg, msg.SenderOfMsg })).ToArray());
+        }
     }
 }

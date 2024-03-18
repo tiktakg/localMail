@@ -391,4 +391,4 @@ C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\
 C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\consoleMailSever.pdb
 C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\consoleMailSever.genruntimeconfig.cache
 C:\Users\gupli\source\repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\ref\consoleMailSever.dll
-C:\Users\gupli\Source\Repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\consoleM.5A767E86.Up2Date
+C:\Users\gupli\Source\Repos\tiktakg\localMail\consoleMailSever\obj\Debug\net8.0\consoleMailSever.csproj.CopyComplete
