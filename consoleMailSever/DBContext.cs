@@ -12,7 +12,7 @@ namespace consoleMailSever
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=TikTak;Initial Catalog=mailDB;Integrated Security=True;Trust Server Certificate=True");
+                optionsBuilder.UseSqlServer(@"Data Source=TikTakM;Initial Catalog=mailDB;Integrated Security=True;Trust Server Certificate=True");
             }
         }
 

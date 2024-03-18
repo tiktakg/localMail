@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\consoleMail",
-    "\\consoleMailSever",
+    "\\consoleMail\\entitys",
     "\\consoleMail\\Forms"
   ],
-  "SelectedNode": "\\consoleMail\\Forms\\regForm.cs",
+  "SelectedNode": "\\consoleMail\\entitys\\msg.cs",
   "PreviewInSolutionExplorer": false
 }

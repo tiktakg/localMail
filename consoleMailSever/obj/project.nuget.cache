@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4mD8rROkeoeVI4TYGtFEnH3m57zpbL5H1zhRyxCWtNsPpCsFSekNrbokl8ngFywlpv3ZZSXrJbHiBoo2lcyJ0A==",
+  "dgSpecHash": "r/1XaV395aTpY5cSda764at8k9OOKFONj5r876Q5G50v2flrCOYZjq+czy5SOriwE23t3FxcYqC9lFdjOuCGog==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gupli\\source\\repos\\tiktakg\\localMail\\consoleMailSever\\consoleMailSever.csproj",
+  "projectFilePath": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMailSever\\consoleMailSever.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gupli\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\gupli\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

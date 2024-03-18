@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gupli\\source\\repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj": {}
+    "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gupli\\source\\repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj": {
+    "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gupli\\source\\repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj",
+        "projectUniqueName": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj",
         "projectName": "consoleMail",
-        "projectPath": "C:\\Users\\gupli\\source\\repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj",
+        "projectPath": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\consoleMail.csproj",
         "packagesPath": "C:\\Users\\gupli\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\gupli\\Source\\Repos\\tiktakg\\localMail\\consoleMail\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\programs\\Visual studio\\VisualStudioSdk\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\gupli\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,12 +39,21 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "Microsoft.Toolkit.Uwp.Notifications": {
+              "target": "Package",
+              "version": "[7.1.3, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
@@ -52,6 +61,10 @@
             "Newtonsoft.Json.Bson": {
               "target": "Package",
               "version": "[1.0.2, )"
+            },
+            "Uno.UI": {
+              "target": "Package",
+              "version": "[5.1.87, )"
             }
           },
           "imports": [
@@ -73,7 +86,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -8,6 +8,8 @@ namespace consoleMail.entitys
 {
     internal class jsonMsg
     {
+        public user newUser { get; set; }
+        public user findUser { get; set; }
         public msg msg { get; set; }
         public List<msg> getAllMsg { get; set; }
 
